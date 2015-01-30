@@ -31,6 +31,7 @@ import org.jdom2.Element;
 import bdv.img.catmaid.XmlIoCatmaidImageLoader;
 import bdv.img.hdf5.Hdf5ImageLoader;
 import bdv.img.hdf5.Partition;
+import bdv.img.klb.XmlIoKlbImageLoader;
 import bdv.img.openconnectome.XmlIoOpenConnectomeImageLoader;
 import bdv.img.remote.XmlIoRemoteImageLoader;
 import bdv.spimdata.SequenceDescriptionMinimal;
@@ -153,7 +154,11 @@ public class XmlIoSpimDataMinimalLegacy
 		{
 			return new XmlIoOpenConnectomeImageLoader().fromXml( elem, basePath, sequenceDescription );
 		}
-		else if ( classn.equals( "bdv.img.remote.RemoteImageLoader" ) )
+		else if ( classn.equals( "bdv.img.klb.KlbImageLoader" ) )
+        {
+            return new XmlIoKlbImageLoader().fromXml( elem, basePath, sequenceDescription );
+        }
+        else if ( classn.equals( "bdv.img.remote.RemoteImageLoader" ) )
 		{
 			return new XmlIoRemoteImageLoader().fromXml( elem, basePath, sequenceDescription );
 		}
