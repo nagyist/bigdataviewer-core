@@ -44,9 +44,6 @@ public class KlbImageLoader extends AbstractViewerImgLoader< UnsignedShortType, 
 	{
 	    super( new UnsignedShortType(), new VolatileUnsignedShortType() );
 
-        System.load("/groups/saalfeld/home/saalfelds/workspace/KLB_File_Format/keller-lab-block-filetype/build/libklb.so");
-	    System.load("/groups/saalfeld/home/saalfelds/workspace/KLB_File_Format/keller-lab-block-filetype/build/libklb-jni.so");
-
 		numScales = 1;
 
 		final KlbImageIO io = new KlbImageIO();

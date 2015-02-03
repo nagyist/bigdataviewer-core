@@ -35,6 +35,11 @@
 			<groupId>sc.fiji</groupId>
 			<artifactId>spim_data</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.janelia.simview</groupId>
+            <artifactId>klb</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
 		<dependency>
 			<groupId>cisd</groupId>
 			<artifactId>jhdf5</artifactId>

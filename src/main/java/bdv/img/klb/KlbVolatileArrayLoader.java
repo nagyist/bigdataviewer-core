@@ -19,9 +19,6 @@ public class KlbVolatileArrayLoader implements CacheArrayLoader< VolatileShortAr
 
 	public KlbVolatileArrayLoader( final String filePath, final int channel )
 	{
-	    System.load("/groups/saalfeld/home/saalfelds/workspace/KLB_File_Format/keller-lab-block-filetype/build/libklb.so");
-        System.load("/groups/saalfeld/home/saalfelds/workspace/KLB_File_Format/keller-lab-block-filetype/build/libklb-jni.so");
-
         this.filePath = filePath;
 
 	    klb_min[ 3 ] = klb_max[ 3 ] = channel;
