@@ -63,9 +63,11 @@ public class KlbImageLoader extends AbstractViewerImgLoader< UnsignedShortType, 
 
 		final float[] pixelSize = header.getPixelSize();
 		mipmapResolutions = new double[][]{ {
-		    pixelSize[ 0 ],
-		    pixelSize[ 1 ],
-		    pixelSize[ 2 ] } };
+            // handle missing sampling metadata (defaults to -1)
+		    pixelSize[ 0 ] != -1 ? pixelSize[0] : 1,
+		    pixelSize[ 1 ] != -1 ? pixelSize[1] : 1,
+		    pixelSize[ 2 ] != -1 ? pixelSize[2] : 1
+        } };
 
 		System.out.println( Arrays.toString( pixelSize ) );
 
@@ -75,13 +77,8 @@ public class KlbImageLoader extends AbstractViewerImgLoader< UnsignedShortType, 
 		mipmapTransforms[0].set(
 		        1, 0, 0, 0,
 		        0, mipmapResolutions[ 0 ][ 0 ] / mipmapResolutions[ 0 ][ 1 ], 0, 0,
-		        0, 0, mipmapResolutions[ 0 ][ 0 ] / mipmapResolutions[ 0 ][ 2 ], 0 );
-
-		/* TODO Well---there are only -1s in this file, so we fix this here to see something... */
-		mipmapTransforms[0].set(
-                1, 0, 0, 0,
-                0, 1, 0, 0,
-                0, 0, 12, 0 );
+		        0, 0, mipmapResolutions[ 0 ][ 0 ] / mipmapResolutions[ 0 ][ 2 ], 0
+        );
 
 		cache = new VolatileGlobalCellCache< VolatileShortArray >(
 				new KlbVolatileArrayLoader( filePath, channel ), 1, 1, numScales, 10 );
