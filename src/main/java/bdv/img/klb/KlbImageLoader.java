@@ -76,8 +76,8 @@ public class KlbImageLoader extends AbstractViewerImgLoader< UnsignedShortType, 
 		};
 		mipmapTransforms[0].set(
 		        1, 0, 0, 0,
-		        0, mipmapResolutions[ 0 ][ 0 ] / mipmapResolutions[ 0 ][ 1 ], 0, 0,
-		        0, 0, mipmapResolutions[ 0 ][ 0 ] / mipmapResolutions[ 0 ][ 2 ], 0
+		        0, mipmapResolutions[ 0 ][ 1 ] / mipmapResolutions[ 0 ][ 0 ], 0, 0,
+		        0, 0, mipmapResolutions[ 0 ][ 2 ] / mipmapResolutions[ 0 ][ 0 ], 0
         );
 
 		cache = new VolatileGlobalCellCache< VolatileShortArray >(
