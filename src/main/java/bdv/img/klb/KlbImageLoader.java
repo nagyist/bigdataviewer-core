@@ -1,7 +1,5 @@
 package bdv.img.klb;
 
-import java.util.Arrays;
-
 import mpicbg.spim.data.sequence.ViewId;
 import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.img.NativeImg;
@@ -69,8 +67,6 @@ public class KlbImageLoader extends AbstractViewerImgLoader< UnsignedShortType, 
 		    pixelSize[ 2 ] != -1 ? pixelSize[2] : 1
         } };
 
-		System.out.println( Arrays.toString( pixelSize ) );
-
 		mipmapTransforms = new AffineTransform3D[]{
 		        new AffineTransform3D()
 		};
@@ -81,7 +77,7 @@ public class KlbImageLoader extends AbstractViewerImgLoader< UnsignedShortType, 
         );
 
 		cache = new VolatileGlobalCellCache< VolatileShortArray >(
-				new KlbVolatileArrayLoader( filePath, channel ), 1, 1, numScales, 10 );
+				new KlbVolatileArrayLoader( filePath, channel ), 1, 1, numScales, Runtime.getRuntime().availableProcessors() );
 	}
 
 
